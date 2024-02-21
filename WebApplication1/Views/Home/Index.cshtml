@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<button onclick="location.href='@Url.Action("ExportToExcel", "Map")'">Export to Excel</button>
+
+<button onclick="location.href='@Url.Action("ExportAndEmail", "Map")'">Export to Email</button>
+
+<div id="viewDiv" style="height: 600px;"></div>
+
+<form asp-action="ExportToExcel" asp-controller="Map" method="post">
+    <div>
+        <label for="startRow">بداية الصف:</label>
+        <input type="number" name="startRow" id="startRow" min="1" />
+    </div>
+    <div>
+        <label for="endRow">نهاية الصف:</label>
+        <input type="number" name="endRow" id="endRow" min="1" />
+    </div>
+    <!-- إضافة حقول للأعمدة المحددة -->
+    <div>
+        <label for="SciName">SciName</label>
+        <input type="checkbox" name="selectedColumns" value="SciName" id="SciName" />
+    </div>
+    <div>
+        <label for="CommonName">CommonName</label>
+        <input type="checkbox" name="selectedColumns" value="CommonName" id="CommonName" />
+    </div>
+    <!-- إضافة المزيد من الأعمدة حسب الحاجة -->
+    <button type="submit">استخراج التقرير</button>
+</form>
+<!-- إضافة الـ ArcGIS Map -->
+<script>
+    require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer"
+    ], function (Map, MapView, FeatureLayer)    ], function (Map, MapView, FeatureLayer) {
+        var map = new Map({
+            basemap: "streets"
+        });
+
+        var view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [-118.2437, 34.0522], // Longitude, latitude
+            zoom: 8
+        });
+
+        var featureLayer = new FeatureLayer({
+            url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0"
+        });
+
+        map.add(featureLayer);
+    });
+</script>
