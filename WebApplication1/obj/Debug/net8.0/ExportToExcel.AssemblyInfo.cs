@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExportToExcel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4a58b4ff01762ccffcf6969908efce5cdb38e9b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExportToExcel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExportToExcel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
